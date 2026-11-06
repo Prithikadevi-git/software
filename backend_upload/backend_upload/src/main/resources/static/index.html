@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SK Software</title>
+    <style>
+        :root{--bg:#040b1c;--side:#061026;--card:#0a1a3a;--bd:#17306a;--tx:#e8eefc;--mu:#8fa3cc;--bl:#2f7bff;--gr:#22d36b;--or:#ff9f1c;--pu:#8b5cf6;--rd:#ff4d4f;--yl:#ffc83d;--hl:#1a6dff;color-scheme:dark}
+        *{box-sizing:border-box}
+        body{margin:0;background:radial-gradient(1100px 420px at 55% -120px,#12439a 0,transparent 70%),radial-gradient(600px 400px at 100% 100%,#0c2a5c 0,transparent 70%),var(--bg);color:var(--tx);font:14px/1.4 "Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif}
+        svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+        .app{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
+        aside{background:linear-gradient(180deg,#071433,#050d22);border-right:1px solid var(--bd);padding:16px 12px;display:flex;flex-direction:column;gap:6px;position:sticky;top:0;height:100vh;overflow-y:auto}
+        .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:16px;white-space:nowrap;padding:0 2px 16px}
+        .logo{width:54px;height:54px;flex:none;display:grid;place-items:center}
+        .logo.fb{border-radius:50%;background:radial-gradient(circle at 35% 30%,#7fd6ff,#1a6dff 60%,#0a2a6b)}
+        .logo img{width:100%;height:100%;object-fit:contain;display:block;background:#fff;border-radius:12px}
+        nav{display:flex;flex-direction:column;gap:4px}
+        nav a{display:flex;gap:12px;align-items:center;padding:11px 14px;border-radius:10px;color:var(--mu);text-decoration:none;font-size:15px}
+        nav a:hover{background:rgba(47,123,255,.12);color:#fff}
+        nav a.on{background:linear-gradient(90deg,#1a6dff,#2f8bff);color:#fff;box-shadow:0 4px 20px rgba(26,109,255,.55)}
+        nav a svg.i{color:#7fb0ff}nav a.on svg.i{color:#fff}
+        nav a b{margin-left:auto;background:var(--rd);color:#fff;border-radius:99px;font-size:11px;padding:1px 8px}
+        .user{margin-top:auto;display:flex;gap:10px;align-items:center;padding:12px 8px;border-top:1px solid var(--bd)}
+        .user i{width:38px;height:38px;border-radius:50%;background:var(--hl);display:grid;place-items:center;font-style:normal;font-weight:700;color:#fff;flex:none}
+        .user small{color:var(--mu);display:block}
+        .promo{border-radius:12px;padding:14px;background:linear-gradient(170deg,#0b3a2a,#0a2a66 55%,#1f6fd0);border:1px solid #1f4a9a;position:relative;overflow:hidden;height:195px;flex:none}
+        .promo b{display:block;font-size:15px;position:relative;z-index:2;padding-left:34px;line-height:1.25}
+        .promo small{color:#cfe0ff;font-size:11px;position:relative;z-index:2;display:block;margin-top:4px}
+        .promo .lf{position:absolute;left:12px;top:12px;font-size:24px;z-index:2}
+        .promo svg.city{position:absolute;left:0;bottom:0;width:100%;height:130px}
+        main{padding:16px 22px;display:flex;flex-direction:column;gap:14px;min-width:0}
+        header{display:flex;align-items:center;gap:14px}
+        header .hl{width:50px;height:50px;flex:none}
+        header h1{margin:0;font-size:26px;line-height:1.1}header p{margin:3px 0 0;color:var(--mu)}
+        .sp{flex:1}
+        .pill{border:1px solid var(--bd);border-radius:99px;padding:6px 14px;color:var(--mu);font-size:13px;white-space:nowrap;display:flex;align-items:center;gap:8px}
+        .pill.lv{color:var(--gr);border-color:#1b7a47;background:rgba(34,211,107,.12);font-weight:600}.pill.lv i,.live i{width:9px;height:9px;border-radius:50%;background:var(--gr);box-shadow:0 0 8px var(--gr);animation:pl 1.8s ease-in-out infinite}
+        @keyframes pl{50%{opacity:.35}}@media(prefers-reduced-motion:reduce){.pill.lv i,.live i{animation:none}}
+        .bell{position:relative;cursor:pointer;color:var(--mu);display:grid;place-items:center;width:38px;height:38px}
+        .bell svg.i{width:26px;height:26px}
+        .bell b{position:absolute;top:0;right:-2px;background:var(--rd);color:#fff;border-radius:99px;font-size:10px;padding:1px 6px}
+        .fs{cursor:pointer;color:var(--mu);background:none;border:0;display:grid;place-items:center;width:38px;height:38px}
+        .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+        .card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px;min-width:0;box-shadow:0 6px 24px rgba(0,0,0,.25)}
+        .kpi{display:flex;gap:14px;align-items:center;position:relative;overflow:hidden;min-height:100px}
+        .kpi .ic{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;font-size:20px;flex:none;color:#fff;font-weight:700;box-shadow:0 0 20px rgba(255,255,255,.25)}
+        .kpi .ic svg.i{width:28px;height:28px}
+        .kpi .tx{position:relative;z-index:2;min-width:0}
+        .kpi small{color:var(--tx);font-size:13px;opacity:.9}
+        .kpi strong{display:block;font-size:27px;line-height:1.15;white-space:nowrap}
+        .kpi strong em{font-size:15px;font-style:normal;font-weight:500}
+        .kpi .d{font-size:12px;font-weight:600;display:block;white-space:nowrap}
+        .up{color:var(--gr)}.dn{color:var(--or)}
+        .kpi svg.sp2{position:absolute;right:0;bottom:0;width:42%;height:50px;z-index:1}
+        .k1{background:linear-gradient(120deg,#1a63ea 0,#0e3384 38%,#0a1d46 100%);border-color:#2f7bff;box-shadow:0 0 24px rgba(47,123,255,.28)}
+        .k2{background:linear-gradient(120deg,#12b653 0,#0b5a35 38%,#08261f 100%);border-color:#22d36b;box-shadow:0 0 24px rgba(34,211,107,.25)}
+        .k3{background:linear-gradient(120deg,#7c3df0 0,#3b2386 38%,#150f3a 100%);border-color:#8b5cf6;box-shadow:0 0 24px rgba(139,92,246,.28)}
+        .k4{background:linear-gradient(120deg,#f0891a 0,#6a3a0c 38%,#2a1708 100%);border-color:#ff9f1c;box-shadow:0 0 24px rgba(255,159,28,.25)}
+        .row2{display:grid;grid-template-columns:2fr 1fr;gap:14px}
+        .row3{display:grid;grid-template-columns:1.2fr 1.2fr 1fr;gap:14px}
+        .ch{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+        .ch h2{margin:0;font-size:18px;display:flex;align-items:center;gap:10px}
+        .ch h2 svg.i{color:var(--bl)}
+        .ch a.va{margin-left:auto;color:#4da3ff;text-decoration:none;font-size:14px}
+        .tabs{margin-left:auto;display:flex;gap:6px}
+        .tabs button{background:transparent;border:1px solid var(--bd);color:var(--mu);border-radius:8px;padding:6px 16px;cursor:pointer;font:inherit}
+        .tabs button.on{background:var(--hl);border-color:var(--hl);color:#fff}
+        .tabs button:focus-visible,nav a:focus-visible,.btn:focus-visible{outline:2px solid var(--yl);outline-offset:2px}
+        .lgd{display:flex;gap:22px;justify-content:center;color:var(--tx);font-size:12px;margin-bottom:4px}
+        .lgd i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}
+        #chartbox{width:100%;position:relative}
+        #chart{width:100%;display:block}
+        .dn-wrap{display:flex;align-items:center;gap:22px;flex-wrap:wrap;justify-content:center;padding-top:8px}
+        .dn-wrap ul{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+        .dn-wrap li{display:flex;gap:10px;align-items:center}
+        .dn-wrap li i{width:11px;height:11px;border-radius:50%}
+        .dn-wrap li b{margin-left:auto;padding-left:26px}
+        .mon{display:grid;grid-template-columns:42px 1fr auto auto;gap:6px 14px;align-items:center;padding:9px 0;border-bottom:1px solid var(--bd)}
+        .mon:last-child{border:0}
+        .mon .em{width:40px;height:40px;border-radius:10px;background:rgba(47,123,255,.14);display:grid;place-items:center;font-size:22px}
+        .mon .bar{height:5px;border-radius:9px;background:var(--bd);margin-top:6px;overflow:hidden}
+        .mon .bar i{display:block;height:100%;border-radius:9px}
+        .tag{padding:6px 14px;border-radius:8px;font-size:12px;font-weight:600;white-space:nowrap}
+        .ok{background:rgba(34,211,107,.16);color:var(--gr)}
+        .hi{background:rgba(255,159,28,.2);color:var(--or)}
+        .live{margin-left:auto;color:var(--gr);font-size:13px;display:flex;align-items:center;gap:6px}
+        .live i{width:8px;height:8px;border-radius:50%;background:var(--gr)}
+        .al{display:flex;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid var(--bd)}
+        .al:last-child{border:0}
+        .al .b{width:38px;height:38px;display:grid;place-items:center;flex:none}
+        .al small{color:var(--mu);display:block}
+        .al time{margin-left:auto;color:var(--mu);font-size:12px;text-align:right;white-space:nowrap;padding-left:8px}
+        .tipc{position:relative;overflow:hidden;display:flex;flex-direction:column}
+        .tipc p{font-size:16px;margin:6px 0 16px;max-width:62%;position:relative;z-index:2}
+        .tipc .leaf{position:absolute;right:14px;top:50px;font-size:84px;z-index:1;filter:drop-shadow(0 0 22px rgba(34,211,107,.6))}
+        .btn{display:block;text-align:center;background:var(--gr);color:#04210f;font-weight:700;border-radius:99px;padding:12px;text-decoration:none;margin-top:auto;position:relative;z-index:2}
+        .note{color:var(--mu);font-size:12px;text-align:center;padding:2px 0 8px}
+        #tt{position:fixed;pointer-events:none;background:#061026;border:1px solid var(--hl);border-radius:8px;padding:6px 12px;font-size:13px;display:none;z-index:5;text-align:center}
+        @media(min-width:1101px) and (max-height:900px){main{padding:10px 20px;gap:10px}header h1{font-size:22px}header .hl{width:42px;height:42px}.kpi{min-height:84px;padding:12px}.kpi .ic{width:48px;height:48px}.kpi strong{font-size:23px}.card{padding:12px}.ch{margin-bottom:6px}.ch h2{font-size:16px}.mon{padding:5px 0}.mon .em{width:34px;height:34px;font-size:18px}.al{padding:6px 0}.al .b{width:30px;height:30px}.tipc p{font-size:14px;margin:2px 0 8px}.tipc .leaf{font-size:60px;top:44px}.btn{padding:9px}.note{padding:0}.dn-wrap{padding-top:0}.dn-wrap ul{gap:10px}nav a{padding:9px 14px}}
+        @media(max-width:1100px){.grid4{grid-template-columns:1fr 1fr}.row2,.row3{grid-template-columns:1fr}}
+        @media(max-width:760px){.app{grid-template-columns:1fr}aside{position:static;height:auto;flex-direction:row;overflow-x:auto;padding:10px}.brand,.user,.promo{display:none}nav{flex-direction:row}nav a{white-space:nowrap;padding:9px 12px}.grid4{grid-template-columns:1fr}header h1{font-size:20px}header{flex-wrap:wrap}}
+    </style></head><body>
+<div class="app">
+    <aside>
+        <div class="brand"><span class="logo"><img src="img/logo.jpg" alt="SK Software" onerror="this.parentNode.classList.add('fb');this.remove()"></span><span>SK Software</span></div>
+        <nav>
+            <a class="on" href="#dashboard"><svg class="i" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Dashboard</a>
+            <a href="modules.html#monitor"><svg class="i" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>Energy Monitor</a>
+            <a href="modules.html#reports"><svg class="i" viewBox="0 0 24 24"><path d="M5 21V11M12 21V4M19 21v-7"/></svg>Reports</a>
+            <a href="modules.html#alerts"><svg class="i" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10 21a2 2 0 0 0 4 0"/></svg>Alerts <b id="nb"></b></a>
+            <a href="modules.html#optimization"><svg class="i" viewBox="0 0 24 24"><path d="M4 6h8M18 6h2M4 12h2M12 12h8M4 18h10M20 18h0"/><circle cx="15" cy="6" r="2.5"/><circle cx="9" cy="12" r="2.5"/><circle cx="17" cy="18" r="2.5"/></svg>Optimization</a>
+            <a href="modules.html#settings"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>Settings</a>
+            <a href="modules.html#profile"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>Profile</a>
+        </nav>
+        <div class="user"><i>U</i><div>User<small>-</small></div></div>
+        <div class="promo"><span class="lf">🌿</span><b>Go Green<br>Save Energy</b><small>Build a Sustainable Future</small>
+            <svg class="city" viewBox="0 0 220 130" preserveAspectRatio="xMidYMax slice">
+                <defs><linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1f6fd0" stop-opacity="0"/><stop offset=".7" stop-color="#4aa3f0"/><stop offset="1" stop-color="#9bd4ff"/></linearGradient>
+                    <linearGradient id="gr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3fc45a"/><stop offset="1" stop-color="#1f8a3d"/></linearGradient></defs>
+                <rect width="220" height="130" fill="url(#sk)"/>
+                <g fill="#e6f2ff"><rect x="60" y="62" width="22" height="58"/><rect x="86" y="40" width="28" height="80"/><rect x="118" y="70" width="22" height="50"/><rect x="144" y="82" width="20" height="38"/></g>
+                <g fill="#7db8ff"><rect x="64" y="68" width="4" height="4"/><rect x="72" y="68" width="4" height="4"/><rect x="64" y="78" width="4" height="4"/><rect x="72" y="78" width="4" height="4"/><rect x="91" y="48" width="4" height="4"/><rect x="99" y="48" width="4" height="4"/><rect x="91" y="60" width="4" height="4"/><rect x="99" y="60" width="4" height="4"/><rect x="91" y="72" width="4" height="4"/><rect x="99" y="72" width="4" height="4"/><rect x="123" y="78" width="4" height="4"/><rect x="131" y="78" width="4" height="4"/></g>
+                <g stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"><path d="M22 122V62M22 62l-12-8M22 62l12-8M22 62V44"/><path d="M196 122V70M196 70l-10-7M196 70l10-7M196 70V55"/></g>
+                <rect y="112" width="220" height="18" fill="url(#gr)"/>
+                <g><circle cx="50" cy="108" r="11" fill="#2fa84f"/><circle cx="172" cy="108" r="11" fill="#2fa84f"/><circle cx="206" cy="110" r="9" fill="#238f40"/><circle cx="8" cy="110" r="9" fill="#238f40"/></g>
+            </svg>
+        </div>
+    </aside>
+
+    <main>
+        <header>
+            <svg class="hl" viewBox="0 0 48 48" aria-hidden="true"><path d="M13 8a20 20 0 0 0 0 32M35 8a20 20 0 0 1 0 32" fill="none" stroke="#22d36b" stroke-width="2.5" stroke-linecap="round" opacity=".7"/><path d="M27 5L13 26h9l-3 17 16-23h-10z" fill="#7dff4f" stroke="#22d36b" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            <div><h1>Smart Energy Management Software</h1><p>Monitor · Optimize · Reduce Carbon Footprint</p></div>
+            <span class="sp"></span>
+            <span class="pill lv"><i></i>Live</span>
+            <span class="pill" id="asof"><svg class="i" viewBox="0 0 24 24" style="width:16px;height:16px"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span id="clk"></span></span>
+            <span class="bell" id="bell" title="Open alerts"><svg class="i" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10 21a2 2 0 0 0 4 0"/></svg><b id="bn"></b></span>
+            <button class="fs" id="fs" title="Full screen" aria-label="Full screen"><svg class="i" viewBox="0 0 24 24" style="width:24px;height:24px"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+        </header>
+
+        <section class="grid4" aria-label="Key figures">
+            <div class="card kpi k1"><div class="ic" style="background:var(--bl)"><svg class="i" viewBox="0 0 24 24" style="fill:#fff;stroke:#fff"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div><div class="tx"><small>Total Energy Usage</small><strong id="v1"></strong><span class="d" id="d1"></span></div><svg class="sp2" id="s1" viewBox="0 0 100 40" preserveAspectRatio="none"></svg></div>
+            <div class="card kpi k2"><div class="ic" style="background:var(--gr);font-size:28px">₹</div><div class="tx"><small>Energy Cost</small><strong id="v2"></strong><span class="d" id="d2"></span></div><svg class="sp2" id="s2" viewBox="0 0 100 40" preserveAspectRatio="none"></svg></div>
+            <div class="card kpi k3"><div class="ic" style="background:var(--pu)">🌿</div><div class="tx"><small>Energy Savings (potential)</small><strong id="v3"></strong><span class="d" id="d3"></span></div><svg class="sp2" id="s3" viewBox="0 0 100 40" preserveAspectRatio="none"></svg></div>
+            <div class="card kpi k4"><div class="ic" style="background:var(--or);font-size:16px">CO₂</div><div class="tx"><small>Carbon Footprint</small><strong id="v4"></strong><span class="d" id="d4"></span></div><svg class="sp2" id="s4" viewBox="0 0 100 40" preserveAspectRatio="none"></svg></div>
+        </section>
+
+        <section class="row2">
+            <div class="card">
+                <div class="ch"><h2><svg class="i" viewBox="0 0 24 24"><path d="M5 21V11M12 21V4M19 21v-7"/></svg>Energy Consumption Overview</h2><div class="tabs" id="tabs"></div></div>
+                <div class="lgd"><span><i style="background:var(--bl)"></i>Energy Usage (kWh)</span><span><i style="background:var(--gr)"></i>Target Usage</span></div>
+                <div id="chartbox"><svg id="chart" role="img" aria-label="Energy consumption chart"></svg></div>
+            </div>
+            <div class="card">
+                <div class="ch"><h2><svg class="i" viewBox="0 0 24 24"><path d="M21 12A9 9 0 1 1 12 3v9z"/><path d="M15 3.5A9 9 0 0 1 20.5 9H15z"/></svg>Energy Distribution</h2></div>
+                <div class="dn-wrap"><svg id="donut" width="190" height="190" viewBox="0 0 190 190" role="img" aria-label="Energy share by load type"></svg><ul id="dl"></ul></div>
+            </div>
+        </section>
+
+        <section class="row3">
+            <div class="card"><div class="ch"><h2><svg class="i" viewBox="0 0 24 24"><path d="M5 21V11M12 21V4M19 21v-7"/></svg>Real-Time Monitoring</h2><span class="live"><i></i>Live</span></div><div id="mon"></div></div>
+            <div class="card"><div class="ch"><h2><svg class="i" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10 21a2 2 0 0 0 4 0"/></svg>Recent Alerts</h2><a class="va" href="modules.html#alerts">View All →</a></div><div id="al"></div></div>
+            <div class="card tipc"><span class="leaf">🌱</span><div class="ch"><h2>💡 Energy Saving Tips</h2></div><p id="tip"></p><a class="btn" href="modules.html#optimization">View Recommendations →</a></div>
+        </section>
+        <div class="note">Source: steel-industry dataset replayed to 2026 timestamps (meter MTR-001). Cost assumes a sample tariff of ₹<span id="tar"></span>/kWh. Savings are rule-based estimates and the department split is a simulated allocation of meter MTR-001. Figures cover the last 30 days. Data through <span id="thru"></span>.</div>
+    </main></div>
+<div id="tt"></div>
+<script>
+    const TOKEN=localStorage.getItem('token');
+    if(!TOKEN)location.href='login.html';
+    fetch('/api/dashboard',{headers:{Authorization:'Bearer '+TOKEN}}).then(r=>{if(r.status==401){localStorage.clear();location.href='login.html';throw 0}return r.json()}).then(D=>{
+    const $=id=>document.getElementById(id),n=x=>Number(x).toLocaleString('en-IN');
+    $('thru').textContent=D.end;$('tar').textContent=D.tar;
+    const tick=()=>{$('clk').textContent=new Date().toLocaleString('en-US',{weekday:'short',month:'short',day:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'}).replace(',',',').replace(/,([^,]*)$/,'  $1')};tick();setInterval(tick,20000);
+    const C=D.cards,pc=(p,good)=>`<span class="${(p>=0)===good?'up':'dn'}">${p>=0?'↑':'↓'} ${Math.abs(p)}%</span>`;
+    $('v1').innerHTML=n(C.kwh)+' <em>kWh</em>';$('d1').innerHTML=pc(C.kwhp,false)+' vs last 30d';
+    $('v2').textContent='₹ '+n(C.cost);$('d2').innerHTML=pc(C.costp,false)+' vs last 30d';
+    $('v3').textContent=C.savings+'%';$('d3').innerHTML='<span class="up">≈ ₹ '+n(C.savingsInr)+' / month possible</span>';
+    $('v4').innerHTML=C.co2+' <em>tCO₂</em>';$('d4').innerHTML=pc(C.co2p,false)+' vs last 30d';
+
+    function smooth(pts){const n=pts.length;if(n<3)return 'M'+pts.map(p=>p.join(',')).join('L');
+    const dx=[],m=[],t=[];
+    for(let i=0;i<n-1;i++){dx[i]=pts[i+1][0]-pts[i][0];m[i]=(pts[i+1][1]-pts[i][1])/(dx[i]||1)}
+    t[0]=m[0];t[n-1]=m[n-2];
+    for(let i=1;i<n-1;i++)t[i]=m[i-1]*m[i]<=0?0:(m[i-1]+m[i])/2;
+    for(let i=0;i<n-1;i++){if(m[i]===0){t[i]=0;t[i+1]=0}else{const a=t[i]/m[i],b=t[i+1]/m[i],h=Math.hypot(a,b);if(h>3){t[i]=3*a/h*m[i];t[i+1]=3*b/h*m[i]}}}
+    let d='M'+pts[0][0]+','+pts[0][1];
+    for(let i=0;i<n-1;i++)d+=`C${pts[i][0]+dx[i]/3},${pts[i][1]+t[i]*dx[i]/3} ${pts[i+1][0]-dx[i]/3},${pts[i+1][1]-t[i+1]*dx[i]/3} ${pts[i+1][0]},${pts[i+1][1]}`;
+    return d}
+
+    function spark(id,col){const v=C.spark,mn=Math.min(...v),mx=Math.max(...v);
+    const pts=v.map((y,i)=>[i/(v.length-1)*100,34-(y-mn)/(mx-mn||1)*26]),d=smooth(pts);
+    $(id).innerHTML=`<defs><linearGradient id="g${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${col}" stop-opacity=".45"/><stop offset="1" stop-color="${col}" stop-opacity="0"/></linearGradient></defs><path d="${d}L100,40L0,40Z" fill="url(#g${id})"/><path d="${d}" fill="none" stroke="${col}" stroke-width="2.2" vector-effect="non-scaling-stroke"/>`}
+    spark('s1','#4da3ff');spark('s2','#3df08a');spark('s3','#b39bff');spark('s4','#ffb347');
+    $('nb').textContent=$('bn').textContent=D.openAlerts>99?'99+':D.openAlerts;
+    $('bell').onclick=()=>location.href='modules.html#alerts';
+    $('fs').onclick=()=>{document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()};
+
+    // chart (drawn at real pixel size so text is never stretched)
+    let cur=D.ch['1W']?'1W':Object.keys(D.ch)[0];const tabs=$('tabs');
+    Object.keys(D.ch).filter(k=>D.ch[k].v.length>1).forEach(k=>{const b=document.createElement('button');b.textContent=k;b.onclick=()=>{cur=k;draw()};tabs.appendChild(b)});
+    function draw(){[...tabs.children].forEach(b=>b.classList.toggle('on',b.textContent==cur));
+    const H=Math.max(170,Math.min(270,window.innerHeight-600)),s=D.ch[cur],box=$('chartbox'),W=Math.max(300,box.clientWidth),L=48,B=28,T=12,R=14,v=s.v;
+    const raw=Math.max(...v)*1.05,mag=Math.pow(10,Math.floor(Math.log10(raw/4))),stp=[1,2,2.5,5,10].map(f=>f*mag).find(x=>x*4>=raw),mx=stp*4,avg=v.reduce((a,b)=>a+b,0)/v.length;
+    const X=i=>L+i/(v.length-1||1)*(W-L-R),Y=y=>T+(1-y/mx)*(H-T-B);
+    const ch=$('chart');box.style.height=H+'px';ch.style.height=H+'px';ch.setAttribute('viewBox',`0 0 ${W} ${H}`);
+    let g='<defs><linearGradient id="ar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f7bff" stop-opacity=".7"/><stop offset="1" stop-color="#1a3f9c" stop-opacity=".08"/></linearGradient></defs>';
+    for(let i=0;i<=4;i++){const y=mx*i/4;g+=`<line x1="${L}" x2="${W-R}" y1="${Y(y)}" y2="${Y(y)}" stroke="#17306a" stroke-width="1" stroke-dasharray="${i?'0':'0'}" opacity="${i?.7:1}"/><text x="${L-8}" y="${Y(y)+4}" text-anchor="end" fill="#8fa3cc" font-size="12">${y>=1000?(y/1000).toFixed(1).replace('.0','')+'k':Math.round(y)}</text>`}
+    const step=Math.ceil(v.length/8);
+    s.l.forEach((t,i)=>{if(i%step==0)g+=`<text x="${X(i)}" y="${H-8}" text-anchor="middle" fill="#8fa3cc" font-size="12">${t}</text>`});
+    const pts=v.map((y,i)=>[X(i),Y(y)]),line=smooth(pts);
+    g+=`<path d="${line}L${X(v.length-1)},${Y(0)}L${L},${Y(0)}Z" fill="url(#ar)"/><path d="${line}" fill="none" stroke="#3b8bff" stroke-width="2.5" stroke-linecap="round"/>`;
+    g+=`<line x1="${L}" x2="${W-R}" y1="${Y(avg)}" y2="${Y(avg)}" stroke="#22d36b" stroke-width="2" stroke-dasharray="6 5"/>`;
+    const pk=v.indexOf(Math.max(...v)),dots=v.length>16?[]:v.map((_,i)=>i);if(!dots.includes(pk))dots.push(pk);
+    dots.forEach(i=>{const hot=i==pk;g+=`<circle cx="${X(i)}" cy="${Y(v[i])}" r="${hot?7:4}" fill="${hot?'#fff':'#2f7bff'}" stroke="#3b8bff" stroke-width="${hot?3:1.5}" pointer-events="none"/>`});
+    v.forEach((y,i)=>{g+=`<circle cx="${X(i)}" cy="${Y(y)}" r="12" fill="transparent" data-i="${i}"/>`});
+    const px=X(pk),py=Y(v[pk]),bw=104,bx=Math.min(Math.max(px-bw/2,L),W-R-bw),by=Math.max(py-58,T);
+    g+=`<g id="pin" pointer-events="none"><line x1="${px}" x2="${px}" y1="${py}" y2="${Y(0)}" stroke="#3b8bff" stroke-width="1" stroke-dasharray="3 4" opacity=".6"/><rect x="${bx}" y="${by}" width="${bw}" height="42" rx="8" fill="#061026" stroke="#1a6dff"/><text x="${bx+bw/2}" y="${by+18}" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">${n(v[pk])} kWh</text><text x="${bx+bw/2}" y="${by+34}" text-anchor="middle" fill="#8fa3cc" font-size="11">${s.l[pk]} · peak</text></g>`;
+    ch.innerHTML=g;const tt=$('tt');
+    ch.querySelectorAll('circle[data-i]').forEach(c=>{c.onmousemove=e=>{const i=+c.dataset.i;$('pin').style.display='none';tt.style.display='block';tt.style.left=e.clientX+14+'px';tt.style.top=e.clientY-52+'px';tt.innerHTML=`<b>${n(v[i])} kWh</b><br><span style="color:#8fa3cc">${s.l[i]}</span>`};c.onmouseleave=()=>{tt.style.display='none';$('pin').style.display=''}})}
+    draw();let rt;window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(draw,120)});
+
+    // donut
+    const dcol=['#2f7bff','#ff9f1c','#22d36b','#8b5cf6'],dem={Production:'🏭',HVAC:'❄️',Lighting:'💡',Others:'⚙️'};
+    let a0=-Math.PI/2,ds='',dl='';const cx=95,r=70;
+    D.dep.forEach((d,k)=>{const p=d.pct,a1=a0+p/100*2*Math.PI,lg=p>50?1:0,col=dcol[k%4];
+    ds+=`<path d="M${cx+r*Math.cos(a0)} ${cx+r*Math.sin(a0)} A${r} ${r} 0 ${lg} 1 ${cx+r*Math.cos(a1)} ${cx+r*Math.sin(a1)}" fill="none" stroke="${col}" stroke-width="26"/>`;a0=a1;
+    dl+=`<li><i style="background:${col}"></i>${d.name}<b>${p}%</b></li>`});
+    $('donut').innerHTML=ds+`<text x="95" y="93" text-anchor="middle" fill="#e8eefc" font-size="22" font-weight="700">100%</text><text x="95" y="112" text-anchor="middle" fill="#8fa3cc" font-size="12">Total Usage</text>`;$('dl').innerHTML=dl;
+
+    // monitoring
+    $('mon').innerHTML=D.dep.map((d,k)=>{const hi=d.status=='High Load',w=Math.min(100,d.usedPercent||60);
+    return `<div class="mon"><span class="em" style="background:${dcol[k%4]}33;box-shadow:inset 0 0 0 1px ${dcol[k%4]}66">${dem[d.name]||'🏢'}</span><div>${d.name}<div class="bar"><i style="width:${w}%;background:${hi?'var(--or)':dcol[k%4]}"></i></div></div><div style="text-align:right">${n(d.kwhToday)} kWh</div><span class="tag ${hi?'hi':'ok'}">${d.status}</span></div>`}).join('');
+
+    // alerts
+    const tri=(c,f)=>`<svg viewBox="0 0 24 24" width="34" height="34"><path d="M12 3L2 21h20z" fill="${c}" stroke="${c}" stroke-width="2" stroke-linejoin="round"/><path d="M12 9.5v5M12 17.6h.01" stroke="${f}" stroke-width="2.4" stroke-linecap="round"/></svg>`;
+    const ic={r:['r',tri('#ff4d4f','#fff')],y:['y',tri('#ffc83d','#4a3200')],b:['b2','<svg viewBox="0 0 24 24" width="34" height="34"><circle cx="12" cy="12" r="10" fill="#1a8cff"/><path d="M12 11v6M12 7.4h.01" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg>']};
+    $('al').innerHTML=D.al.map(a=>`<div class="al ${ic[a.k][0]}"><span class="b">${ic[a.k][1]}</span><div>${a.a}<small>${a.b}</small></div><time>${a.t}</time></div>`).join('');
+    $('tip').textContent=D.tip;
+
+    const fn=localStorage.getItem('fullName')||'User',rl=localStorage.getItem('role')||'';
+    document.querySelector('.user').innerHTML='<i>'+fn.split(' ').map(w=>w[0]).join('').slice(0,2)+'</i><div>'+fn+'<small>'+rl+'</small></div>';
+    const Q=15*60*1000;setTimeout(()=>location.reload(),Q-(Date.now()%Q)+3000); // refresh at every :00 :15 :30 :45
+    }).catch(e=>{if(e)document.querySelector('main').insertAdjacentHTML('afterbegin','<div class="card">Cannot load data from the API. Is the Spring Boot server running?</div>')});
+</script></body></html>

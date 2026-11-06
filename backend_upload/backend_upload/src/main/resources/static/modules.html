@@ -1,0 +1,126 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Modules - SK Software</title>
+    <style>
+        :root{--bg:#040b1c;--side:#061026;--card:#0a1a3a;--bd:#17306a;--tx:#e8eefc;--mu:#8fa3cc;--bl:#2f7bff;--gr:#22d36b;--or:#ff9f1c;--pu:#8b5cf6;--rd:#ff4d4f;--yl:#ffc83d;--hl:#1a6dff;color-scheme:dark}
+        *{box-sizing:border-box}
+        body{margin:0;background:radial-gradient(1100px 420px at 55% -120px,#12439a 0,transparent 70%),radial-gradient(600px 400px at 100% 100%,#0c2a5c 0,transparent 70%),var(--bg);color:var(--tx);font:14px/1.4 "Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif}
+        svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+        .app{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
+        aside{background:linear-gradient(180deg,#071433,#050d22);border-right:1px solid var(--bd);padding:16px 12px;display:flex;flex-direction:column;gap:6px;position:sticky;top:0;height:100vh;overflow-y:auto}
+        .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:16px;white-space:nowrap;padding:0 2px 16px}
+        .logo{width:54px;height:54px;flex:none;display:grid;place-items:center}
+        .logo.fb{border-radius:50%;background:radial-gradient(circle at 35% 30%,#7fd6ff,#1a6dff 60%,#0a2a6b)}
+        .logo img{width:100%;height:100%;object-fit:contain;display:block;background:#fff;border-radius:12px}
+        nav{display:flex;flex-direction:column;gap:4px}
+        nav a{display:flex;gap:12px;align-items:center;padding:11px 14px;border-radius:10px;color:var(--mu);text-decoration:none;font-size:15px}
+        nav a:hover{background:rgba(47,123,255,.12);color:#fff}
+        nav a.on{background:linear-gradient(90deg,#1a6dff,#2f8bff);color:#fff;box-shadow:0 4px 20px rgba(26,109,255,.55)}
+        nav a svg.i{color:#7fb0ff}nav a.on svg.i{color:#fff}
+        .user{margin-top:auto;display:flex;gap:10px;align-items:center;padding:12px 8px;border-top:1px solid var(--bd)}
+        .user i{width:38px;height:38px;border-radius:50%;background:var(--hl);display:grid;place-items:center;font-style:normal;font-weight:700;color:#fff;flex:none}
+        .user small{color:var(--mu);display:block}
+        .promo{border-radius:12px;padding:14px;background:linear-gradient(170deg,#0b3a2a,#0a2a66 55%,#1f6fd0);border:1px solid #1f4a9a;position:relative;overflow:hidden;height:195px;flex:none}
+        .promo b{display:block;font-size:15px;position:relative;z-index:2;padding-left:34px;line-height:1.25}
+        .promo small{color:#cfe0ff;font-size:11px;position:relative;z-index:2;display:block;margin-top:4px}
+        .promo .lf{position:absolute;left:12px;top:12px;font-size:24px;z-index:2}
+        .promo svg.city{position:absolute;left:0;bottom:0;width:100%;height:130px}
+        main{padding:16px 22px;display:flex;flex-direction:column;gap:14px;min-width:0}
+        header{display:flex;align-items:center;gap:14px}
+        header .hl{width:50px;height:50px;flex:none}
+        header h1{margin:0;font-size:26px;line-height:1.1}header p{margin:3px 0 0;color:var(--mu)}
+        .sp{flex:1}
+        .pill{border:1px solid var(--bd);border-radius:99px;padding:6px 14px;color:var(--mu);font-size:13px;white-space:nowrap;display:flex;align-items:center;gap:8px}
+        .pill.lv{color:var(--gr);border-color:#1b7a47;background:rgba(34,211,107,.12);font-weight:600}
+        .pill.lv i{width:9px;height:9px;border-radius:50%;background:var(--gr);box-shadow:0 0 8px var(--gr);animation:pl 1.8s ease-in-out infinite}
+        @keyframes pl{50%{opacity:.35}}@media(prefers-reduced-motion:reduce){.pill.lv i{animation:none}}
+        .card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px;min-width:0;box-shadow:0 6px 24px rgba(0,0,0,.25)}
+        .btn:focus-visible,nav a:focus-visible{outline:2px solid var(--yl);outline-offset:2px}
+        @media(max-width:760px){.app{grid-template-columns:1fr}aside{position:static;height:auto;flex-direction:row;overflow-x:auto;padding:10px}.brand,.user,.promo{display:none}nav{flex-direction:row}nav a{white-space:nowrap;padding:9px 12px}header h1{font-size:20px}header{flex-wrap:wrap}}
+
+        .chips{display:flex;gap:8px;flex-wrap:wrap}.chips button,.tools button,td button{background:transparent;border:1px solid var(--bd);color:var(--mu);border-radius:8px;padding:6px 12px;cursor:pointer;font:inherit}
+        .chips button.on{background:var(--hl);border-color:var(--hl);color:#fff}.tools{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.tools button.on{border-color:var(--gr);color:var(--gr)}
+        .wrap{overflow-x:auto}table{border-collapse:collapse;width:100%}th,td{padding:8px 12px;border-bottom:1px solid var(--bd);text-align:left;white-space:nowrap}th{color:var(--mu);font-weight:600}
+        td button{padding:3px 9px;margin-right:4px}h3{margin:18px 0 8px}pre{white-space:pre-wrap;color:var(--mu)}</style></head><body>
+<div class="app"><aside>
+    <div class="brand"><span class="logo"><img src="img/logo.jpg" alt="SK Software" onerror="this.parentNode.classList.add('fb');this.remove()"></span><span>SK Software</span></div>
+    <nav>
+        <a href="index.html"><svg class="i" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Dashboard</a>
+        <a href="#monitor"><svg class="i" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>Energy Monitor</a>
+        <a href="#reports"><svg class="i" viewBox="0 0 24 24"><path d="M5 21V11M12 21V4M19 21v-7"/></svg>Reports</a>
+        <a href="#alerts"><svg class="i" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10 21a2 2 0 0 0 4 0"/></svg>Alerts</a>
+        <a href="#optimization"><svg class="i" viewBox="0 0 24 24"><path d="M4 6h8M18 6h2M4 12h2M12 12h8M4 18h10M20 18h0"/><circle cx="15" cy="6" r="2.5"/><circle cx="9" cy="12" r="2.5"/><circle cx="17" cy="18" r="2.5"/></svg>Optimization</a>
+        <a href="#settings"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>Settings</a>
+        <a href="#profile"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>Profile</a>
+    </nav>
+    <div class="user"></div>
+    <div class="promo"><span class="lf">🌿</span><b>Go Green<br>Save Energy</b><small>Build a Sustainable Future</small>
+        <svg class="city" viewBox="0 0 220 130" preserveAspectRatio="xMidYMax slice">
+            <defs><linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1f6fd0" stop-opacity="0"/><stop offset=".7" stop-color="#4aa3f0"/><stop offset="1" stop-color="#9bd4ff"/></linearGradient>
+                <linearGradient id="gr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3fc45a"/><stop offset="1" stop-color="#1f8a3d"/></linearGradient></defs>
+            <rect width="220" height="130" fill="url(#sk)"/>
+            <g fill="#e6f2ff"><rect x="60" y="62" width="22" height="58"/><rect x="86" y="40" width="28" height="80"/><rect x="118" y="70" width="22" height="50"/><rect x="144" y="82" width="20" height="38"/></g>
+            <g fill="#7db8ff"><rect x="64" y="68" width="4" height="4"/><rect x="72" y="68" width="4" height="4"/><rect x="64" y="78" width="4" height="4"/><rect x="72" y="78" width="4" height="4"/><rect x="91" y="48" width="4" height="4"/><rect x="99" y="48" width="4" height="4"/><rect x="91" y="60" width="4" height="4"/><rect x="99" y="60" width="4" height="4"/><rect x="91" y="72" width="4" height="4"/><rect x="99" y="72" width="4" height="4"/><rect x="123" y="78" width="4" height="4"/><rect x="131" y="78" width="4" height="4"/></g>
+            <g stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"><path d="M22 122V62M22 62l-12-8M22 62l12-8M22 62V44"/><path d="M196 122V70M196 70l-10-7M196 70l10-7M196 70V55"/></g>
+            <rect y="112" width="220" height="18" fill="url(#gr)"/>
+            <g><circle cx="50" cy="108" r="11" fill="#2fa84f"/><circle cx="172" cy="108" r="11" fill="#2fa84f"/><circle cx="206" cy="110" r="9" fill="#238f40"/><circle cx="8" cy="110" r="9" fill="#238f40"/></g>
+        </svg></div>
+</aside>
+    <main><header>
+        <svg class="hl" viewBox="0 0 48 48" aria-hidden="true"><path d="M13 8a20 20 0 0 0 0 32M35 8a20 20 0 0 1 0 32" fill="none" stroke="#22d36b" stroke-width="2.5" stroke-linecap="round" opacity=".7"/><path d="M27 5L13 26h9l-3 17 16-23h-10z" fill="#7dff4f" stroke="#22d36b" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        <div><h1 id="title"></h1><p id="sub">Smart Energy Management Software</p></div>
+        <span class="sp"></span>
+        <span class="pill lv"><i></i>Live</span>
+        <span class="pill"><svg class="i" viewBox="0 0 24 24" style="width:16px;height:16px"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span id="clk"></span></span>
+    </header>
+        <div class="chips" id="chips"></div><div class="card"><div class="tools" id="tools"></div><div id="out" class="wrap"></div></div></main></div>
+<script>
+    const T=localStorage.getItem('token');if(!T)location.href='login.html';
+    const H={Authorization:'Bearer '+T,'Content-Type':'application/json'};
+    const A='/api/alerts/';
+    const MODS={
+    monitor:{t:'2 · Real-Time Energy Monitoring',v:[['Latest readings','/api/readings/latest?limit=20'],['History','/api/readings?size=50'],['Missing intervals','/api/readings/missing?days=30']]},
+    buildings:{t:'3 · Building & Department Management',v:[['Buildings','/api/buildings',1],['Departments','/api/departments',1],['Meters','/api/meters',1]]},
+    analysis:{t:'4 · Energy Consumption Analysis',v:[['Daily','/api/analytics/consumption?period=daily&days=30'],['Weekly','/api/analytics/consumption?period=weekly&days=90'],['Monthly','/api/analytics/consumption?period=monthly&days=183'],['Peak / off-peak','/api/analytics/peak-offpeak'],['Load type','/api/analytics/load-type'],['Department-wise','/api/analytics/department-wise']]},
+    cost:{t:'5 · Electricity Cost Management',v:[['Estimate (Oct 2026)','/api/cost/estimate?month=2026-10'],['Monthly comparison','/api/cost/monthly-comparison'],['Tariffs','/api/tariffs',1],['Actual bills','/api/bills',1]]},
+    alerts:{t:'6 · Smart Alerts & Notifications',v:[['Open alerts','/api/alerts?status=OPEN',0,[['Acknowledge','PUT',A+'{id}/acknowledge'],['Resolve','PUT',A+'{id}/resolve']]],['All alerts','/api/alerts',0,[['Resolve','PUT',A+'{id}/resolve']]]],tools:[['Scan last 7 days','POST','/api/alerts/scan?days=7']]},
+    optimization:{t:'7 · Energy Optimization',v:[['Recommendations','/api/optimization/recommendations']]},
+    carbon:{t:'8 · Carbon Footprint Management',v:[['Summary (30 days)','/api/carbon/summary?days=30']]},
+    equipment:{t:'9 · Equipment Management',v:[['Equipment','/api/equipment',1]]},
+    reports:{t:'10 · Reports & Documentation',v:[['Daily','/api/reports/daily'],['Monthly','/api/reports/monthly'],['Cost','/api/reports/cost'],['Efficiency','/api/reports/efficiency'],['Alerts','/api/reports/alerts']],csv:1},
+    users:{t:'11 · User & Access Management',v:[['Users','/api/users',1],['Audit log','/api/audit']]},
+    settings:{t:'12 · System Settings',v:[['Settings','/api/settings']],settings:1},
+    profile:{t:'Profile',v:[['My account','/api/auth/me']],logout:1}};
+    const CH=['monitor','buildings','analysis','cost','alerts','optimization','carbon','equipment','reports','users','settings'];
+    let cur,vi=0;
+    const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+    const cell=v=>v===null||v===undefined?'':typeof v=='object'?esc(v.name||v.code||v.id||JSON.stringify(v)):esc(v);
+    async function call(m,u,b){const r=await fetch(u,{method:m,headers:H,body:b});if(r.status==401){localStorage.clear();location.href='login.html'}if(!r.ok){alert('Not allowed or failed: '+(await r.text()));return null}const t=await r.text();return t?JSON.parse(t):{}}
+    function table(rows,crud,acts,url){if(!rows.length)return'<p style="color:var(--mu)">No records.</p>';const cols=Object.keys(rows[0]);
+    let h='<table><tr>'+cols.map(c=>'<th>'+esc(c)+'</th>').join('')+((crud||acts)?'<th></th>':'')+'</tr>';
+    rows.forEach((r,i)=>{h+='<tr>'+cols.map(c=>'<td>'+cell(r[c])+'</td>').join('');
+    if(crud||acts){h+='<td>';(acts||[]).forEach((a,j)=>h+=`<button data-act="${j}" data-i="${i}">${a[0]}</button>`);if(crud)h+=`<button data-edit="${i}">Edit</button><button data-del="${i}">Delete</button>`;h+='</td>'}h+='</tr>'});return h+'</table>'}
+    function render(d,view){const crud=view[2],acts=view[3];
+    if(Array.isArray(d))return table(d,crud,acts);
+    if(d&&Array.isArray(d.content))return table(d.content)+'<p style="color:var(--mu)">'+d.totalElements+' readings · page '+(d.page+1)+' of '+d.totalPages+'</p>';
+    let h='',simple=[];for(const[k,v]of Object.entries(d)){if(Array.isArray(v)&&v.length&&typeof v[0]=='object')h+='<h3>'+esc(k)+'</h3>'+table(v);else if(Array.isArray(v))simple.push([k,v.join(' | ')]);else simple.push([k,v])}
+    return '<table>'+simple.map(([k,v])=>'<tr><th>'+esc(k)+'</th><td>'+cell(v)+(M().settings?` <button data-set="${esc(k)}">Edit</button>`:'')+'</td></tr>').join('')+'</table>'+h}
+    const M=()=>MODS[cur];
+    async function load(){const m=M(),v=m.v[vi];title.textContent=m.t;
+    tools.innerHTML=m.v.map((x,i)=>`<button class="${i==vi?'on':''}" data-v="${i}">${x[0]}</button>`).join('')
+    +(v[2]?'<button data-add="1">+ Add</button>':'')+(m.csv?'<button data-csv="1">Download CSV</button>':'')+(m.logout?'<button data-logout="1">Sign out</button>':'')+(m.tools||[]).map((x,i)=>`<button data-tool="${i}">${x[0]}</button>`).join('');
+    out.innerHTML='Loading…';const d=await call('GET',v[1]);if(d===null){out.innerHTML='<p>No data.</p>';return}out.innerHTML=render(d,v);window._d=d;
+    out.querySelectorAll('[data-act]').forEach(b=>b.onclick=async()=>{const a=v[3][b.dataset.act],row=d[b.dataset.i];await call(a[1],a[2].replace('{id}',row.id));load()});
+    out.querySelectorAll('[data-del]').forEach(b=>b.onclick=async()=>{if(confirm('Delete / deactivate this record?')){await call('DELETE',v[1]+'/'+d[b.dataset.del].id);load()}});
+    out.querySelectorAll('[data-edit]').forEach(b=>b.onclick=async()=>{const row=d[b.dataset.edit],j=prompt('Edit JSON',JSON.stringify(row));if(j){await call('PUT',v[1]+'/'+row.id,j);load()}});
+    out.querySelectorAll('[data-set]').forEach(b=>b.onclick=async()=>{const k=b.dataset.set,n=prompt('New value for '+k,d[k]);if(n!==null){await call('PUT','/api/settings',JSON.stringify({[k]:n}));load()}})}
+    tools.onclick=async e=>{const b=e.target;if(b.dataset.v){vi=+b.dataset.v;load()}
+    if(b.dataset.add){const d=window._d,t=Array.isArray(d)&&d[0]?Object.assign({},d[0]):{};delete t.id;const j=prompt('New record (JSON)',JSON.stringify(t));if(j){await call('POST',M().v[vi][1],j);load()}}
+    if(b.dataset.tool){const t=M().tools[b.dataset.tool];const r=await call(t[1],t[2]);if(r)alert(JSON.stringify(r));load()}
+    if(b.dataset.csv){const r=await fetch(M().v[vi][1]+(M().v[vi][1].includes('?')?'&':'?')+'format=csv',{headers:H}),a=document.createElement('a');a.href=URL.createObjectURL(await r.blob());a.download='report.csv';a.click()}
+    if(b.dataset.logout){await call('POST','/api/auth/logout');localStorage.clear();location.href='login.html'}}
+    function route(){cur=(location.hash||'#monitor').slice(1);if(!MODS[cur])cur='monitor';vi=0;
+    chips.innerHTML=CH.map(k=>`<button class="${k==cur?'on':''}" onclick="location.hash='${k}'">${MODS[k].t.split(' · ').pop()}</button>`).join('');
+    document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')=='#'+cur));load()}
+    window.onhashchange=route;route();
+    document.querySelector('.user').innerHTML='<i>'+(localStorage.getItem('fullName')||'U').split(' ').map(w=>w[0]).join('').slice(0,2)+'</i><div>'+localStorage.getItem('fullName')+'<small>'+localStorage.getItem('role')+'</small></div>';
+    const tick=()=>{document.getElementById('clk').textContent=new Date().toLocaleString('en-US',{weekday:'short',month:'short',day:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'}).replace(/,([^,]*)$/,'  $1')};tick();setInterval(tick,20000);
+</script></body></html>

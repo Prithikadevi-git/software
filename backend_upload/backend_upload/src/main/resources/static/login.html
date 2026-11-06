@@ -1,0 +1,63 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Sign in - SK Software</title>
+    <style>
+        :root{--bg:#040b1c;--card:#0a1a3a;--bd:#17306a;--tx:#e8eefc;--mu:#8fa3cc;--bl:#2f7bff;--gr:#22d36b;--rd:#ff4d4f;--yl:#ffc83d;--hl:#1a6dff;color-scheme:dark}
+        *{box-sizing:border-box}
+        body{margin:0;min-height:100vh;background:radial-gradient(1100px 500px at 30% -120px,#12439a 0,transparent 70%),radial-gradient(700px 500px at 100% 100%,#0c2a5c 0,transparent 70%),var(--bg);color:var(--tx);font:14px/1.4 "Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;display:grid;grid-template-columns:1.1fr 1fr}
+        .left{padding:40px 56px;display:flex;flex-direction:column;position:relative;overflow:hidden}
+        .brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:20px;white-space:nowrap}
+        .logo{width:64px;height:64px;flex:none;display:grid;place-items:center}
+        .logo.fb{border-radius:50%;background:radial-gradient(circle at 35% 30%,#7fd6ff,#1a6dff 60%,#0a2a6b)}
+        .logo img{width:100%;height:100%;object-fit:contain;display:block;background:#fff;border-radius:12px}
+        .hero{margin:auto 0;position:relative;z-index:2}
+        .hero svg.bolt{width:78px;height:78px;margin-bottom:14px}
+        .hero h1{margin:0;font-size:38px;line-height:1.12}
+        .hero p{margin:10px 0 0;color:var(--mu);font-size:16px}
+        .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+        .chips span{border:1px solid var(--bd);background:rgba(47,123,255,.1);border-radius:99px;padding:6px 14px;font-size:13px;color:#cfe0ff}
+        svg.city{position:absolute;left:0;right:0;bottom:0;width:100%;height:210px;z-index:1}
+        .right{display:grid;place-items:center;padding:24px}
+        .box{width:100%;max-width:400px;background:linear-gradient(160deg,#0f2a66,var(--card) 60%);border:1px solid #1f4a9a;border-radius:18px;padding:30px;display:grid;gap:12px;box-shadow:0 0 40px rgba(47,123,255,.22)}
+        .box h2{margin:0;font-size:24px}.box p{margin:0;color:var(--mu)}
+        .box label{color:var(--mu);font-size:12px;margin-bottom:-6px}
+        .box input{padding:12px 14px;border-radius:10px;border:1px solid var(--bd);background:#050d1f;color:var(--tx);font:inherit}
+        .box input:focus{outline:2px solid var(--bl);outline-offset:0;border-color:var(--bl)}
+        .box button{padding:13px;border:0;border-radius:10px;background:linear-gradient(90deg,#1a6dff,#2f8bff);color:#fff;font:inherit;font-weight:700;cursor:pointer;box-shadow:0 4px 20px rgba(26,109,255,.5)}
+        .box button:focus-visible{outline:2px solid var(--yl);outline-offset:2px}
+        #err{color:var(--rd);min-height:20px}
+        .box small{color:var(--mu)}
+        @media(max-width:860px){body{grid-template-columns:1fr}.left{padding:24px}.hero h1{font-size:28px}svg.city{display:none}}
+    </style></head><body>
+<section class="left">
+    <div class="brand"><span class="logo"><img src="img/logo.jpg" alt="SK Software" onerror="this.parentNode.classList.add('fb');this.remove()"></span><span>SK Software</span></div>
+    <div class="hero">
+        <svg class="bolt" viewBox="0 0 48 48" aria-hidden="true"><path d="M13 8a20 20 0 0 0 0 32M35 8a20 20 0 0 1 0 32" fill="none" stroke="#22d36b" stroke-width="2.5" stroke-linecap="round" opacity=".7"/><path d="M27 5L13 26h9l-3 17 16-23h-10z" fill="#7dff4f" stroke="#22d36b" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        <h1>Smart Energy<br>Management Software</h1>
+        <p>Monitor · Optimize · Reduce Carbon Footprint</p>
+        <div class="chips"><span>Live monitoring</span><span>Cost &amp; savings</span><span>Smart alerts</span><span>Carbon tracking</span></div>
+    </div>
+    <svg class="city" viewBox="0 0 600 210" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+        <defs><linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1f6fd0" stop-opacity="0"/><stop offset=".75" stop-color="#2f7fdc" stop-opacity=".8"/><stop offset="1" stop-color="#6fb6f5"/></linearGradient>
+            <linearGradient id="gr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3fc45a"/><stop offset="1" stop-color="#1f8a3d"/></linearGradient></defs>
+        <rect width="600" height="210" fill="url(#sk)"/>
+        <g fill="#e6f2ff" opacity=".95"><rect x="250" y="110" width="44" height="80"/><rect x="300" y="70" width="56" height="120"/><rect x="362" y="120" width="42" height="70"/><rect x="410" y="136" width="38" height="54"/><rect x="200" y="140" width="40" height="50"/></g>
+        <g fill="#7db8ff"><rect x="310" y="82" width="8" height="8"/><rect x="326" y="82" width="8" height="8"/><rect x="342" y="82" width="8" height="8"/><rect x="310" y="102" width="8" height="8"/><rect x="326" y="102" width="8" height="8"/><rect x="342" y="102" width="8" height="8"/><rect x="310" y="122" width="8" height="8"/><rect x="326" y="122" width="8" height="8"/><rect x="258" y="124" width="8" height="8"/><rect x="274" y="124" width="8" height="8"/><rect x="370" y="134" width="8" height="8"/><rect x="386" y="134" width="8" height="8"/></g>
+        <g stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"><path d="M60 190V90M60 90l-20-14M60 90l20-14M60 90V62"/><path d="M520 190V110M520 110l-16-11M520 110l16-11M520 110V86"/><path d="M130 190V130M130 130l-12-8M130 130l12-8M130 130v-20"/></g>
+        <rect y="184" width="600" height="26" fill="url(#gr)"/>
+        <g><circle cx="90" cy="180" r="16" fill="#2fa84f"/><circle cx="470" cy="180" r="16" fill="#2fa84f"/><circle cx="570" cy="182" r="13" fill="#238f40"/><circle cx="20" cy="182" r="13" fill="#238f40"/></g>
+    </svg>
+</section>
+<section class="right"><div class="box">
+    <h2>Sign in</h2><p>Sign in to continue</p>
+    <label for="u">Username</label><input id="u" placeholder="Username" autocomplete="username" value="admin">
+    <label for="p">Password</label><input id="p" type="password" placeholder="Password" autocomplete="current-password" value="admin123">
+    <button id="b">Sign in</button><div id="err"></div>
+    <small>Demo users: admin / manager / engineer / viewer (password: name + 123)</small>
+</div></section>
+<script>
+    async function go(){const r=await fetch('/api/auth/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:u.value,password:p.value})});
+    if(!r.ok){err.textContent='Invalid username or password';return}const d=await r.json();
+    localStorage.setItem('token',d.token);localStorage.setItem('fullName',d.fullName);localStorage.setItem('role',d.role);localStorage.setItem('username',d.username);
+    try{const s=await (await fetch('/api/settings',{headers:{Authorization:'Bearer '+d.token}})).json();localStorage.setItem('refresh',s['refresh.seconds']||60)}catch(e){}
+    location.href='index.html'}
+    b.onclick=go;p.onkeydown=e=>{if(e.key=='Enter')go()};
+</script></body></html>
